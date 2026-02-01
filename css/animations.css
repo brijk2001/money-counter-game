@@ -1,0 +1,146 @@
+/* === KEYFRAME ANIMATIONS === */
+
+/* Click target squish */
+.click-target.squish .click-target-inner {
+    animation: squish 0.15s ease;
+}
+
+@keyframes squish {
+    0% { transform: scale(1); }
+    40% { transform: scale(0.88); }
+    70% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Pulse ring around click target */
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* Text glow for level-up title */
+@keyframes text-glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    to {
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(255, 153, 51, 0.3);
+    }
+}
+
+/* Purchase flash on upgrade card */
+.upgrade-card.purchased-flash {
+    animation: purchase-flash 0.5s ease;
+}
+
+@keyframes purchase-flash {
+    0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6); }
+    50% { box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.3); background: rgba(255, 215, 0, 0.1); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+}
+
+/* Balance pulse when earning passively */
+@keyframes balance-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+/* Combo glow on click target */
+body.combo-active .click-target-inner {
+    box-shadow:
+        0 0 30px rgba(255, 65, 65, 0.4),
+        0 0 60px rgba(255, 153, 51, 0.2),
+        inset 0 -4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Modal entrance */
+@keyframes modal-slide-up {
+    from {
+        transform: translateY(20px) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-overlay.visible .modal {
+    animation: modal-slide-up 0.3s ease-out;
+}
+
+/* Level progress shimmer */
+.level-progress-fill {
+    position: relative;
+    overflow: hidden;
+}
+
+.level-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% { left: 100%; }
+}
+
+/* Upgrade card hover shine (desktop) */
+@media (hover: hover) {
+    .upgrade-card.affordable::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 215, 0, 0.05),
+            transparent
+        );
+        transition: left 0.5s ease;
+    }
+
+    .upgrade-card.affordable:hover::before {
+        left: 150%;
+    }
+
+    .upgrade-card {
+        position: relative;
+        overflow: hidden;
+    }
+}
+
+/* Gentle float for click target */
+.click-target-inner {
+    animation: gentle-float 3s ease-in-out infinite;
+}
+
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Override float during squish */
+.click-target.squish .click-target-inner {
+    animation: squish 0.15s ease;
+}

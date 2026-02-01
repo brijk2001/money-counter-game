@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Money Counter - Tap your way to becoming the RBI Governor!">
+    <meta name="theme-color" content="#0a1628">
+    <title>Money Counter</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/particles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+</head>
+<body data-level-tier="1">
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="top-bar-left">
+            <span id="level-num" class="level-badge">Level 1</span>
+            <span id="level-title" class="level-title">Coin Counter</span>
+        </div>
+        <div class="top-bar-right">
+            <button id="sound-toggle" class="icon-btn" aria-label="Toggle sound">🔊</button>
+        </div>
+    </header>
+
+    <!-- Main Game Area -->
+    <main class="game-area">
+        <!-- Balance Display -->
+        <div class="balance-section">
+            <div class="balance-label">Bank Balance</div>
+            <div id="balance" class="balance-amount">₹0</div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="stat">
+                <span class="stat-label">Per Click</span>
+                <span id="click-power" class="stat-value">₹1</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Per Second</span>
+                <span id="passive-income" class="stat-value">₹0/s</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Multiplier</span>
+                <span id="multiplier" class="stat-value">x1.0</span>
+            </div>
+        </div>
+
+        <!-- Click Target -->
+        <div class="click-area">
+            <div id="click-target" class="click-target">
+                <div class="click-target-inner">
+                    <div class="click-target-icon">₹</div>
+                    <div class="click-target-label">TAP!</div>
+                </div>
+                <div class="click-target-ring"></div>
+            </div>
+
+            <!-- Combo Display -->
+            <div id="combo-display" class="combo-display">
+                <span class="combo-label">COMBO</span>
+                <span id="combo-count" class="combo-count">0</span>
+                <span id="combo-mult" class="combo-mult"></span>
+            </div>
+        </div>
+
+        <!-- Level Progress -->
+        <div class="level-progress">
+            <div class="level-progress-bar">
+                <div id="level-progress-fill" class="level-progress-fill"></div>
+            </div>
+            <div id="level-next" class="level-next">Next: ₹100</div>
+        </div>
+
+        <!-- Total Clicks -->
+        <div class="clicks-display">
+            Total clicks: <span id="total-clicks">0</span>
+        </div>
+    </main>
+
+    <!-- Upgrade Shop -->
+    <section class="shop">
+        <div class="shop-header">
+            <h2 class="shop-title">Upgrades</h2>
+            <div class="shop-tabs">
+                <button class="shop-tab active" data-tab="all">All</button>
+                <button class="shop-tab" data-tab="click">Click</button>
+                <button class="shop-tab" data-tab="passive">Passive</button>
+                <button class="shop-tab" data-tab="multi">Multi</button>
+            </div>
+        </div>
+        <div id="upgrade-list" class="upgrade-list"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        Developed by Brijesh &copy; <span id="footer-year"></span>
+    </footer>
+    <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+
+    <!-- Particles Container -->
+    <div id="particles-container" class="particles-container"></div>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <h2 id="modal-title" class="modal-title"></h2>
+            <div id="modal-body" class="modal-body"></div>
+            <button id="modal-btn" class="modal-btn">Continue</button>
+        </div>
+    </div>
+
+    <!-- Scripts (order matters) -->
+    <script src="js/utils.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/upgrades.js"></script>
+    <script src="js/click.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
